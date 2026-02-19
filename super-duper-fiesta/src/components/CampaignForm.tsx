@@ -34,7 +34,7 @@ const CampaignForm: React.FC = () => {
         setFormStatus('processing');
         setResponse(null);
 
-        try {
+        try { // calls returnAgent from market.ts
             const result = await returnAgent(brief);
             setResponse(result);
             setFormStatus('complete');
@@ -82,6 +82,9 @@ const CampaignForm: React.FC = () => {
     // Default: idle state — show the form
     return (
         <form onSubmit={handleSubmit}>
+            <div>
+                <h4> * means required field. </h4>
+            </div>
             <div>
                 <label>Event Name *</label>
                 <input value={event} onChange={(e) => setEvent(e.target.value)} required />
